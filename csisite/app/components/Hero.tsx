@@ -89,7 +89,7 @@ export function Hero() {
             transition={{ duration: 1, delay: 1.2 }}
           >
             <div className="text-right">
-              <div className="text-6xl md:text-8xl font-light text-gray-800">2025</div>
+              <div className="text-6xl md:text-8xl font-light text-gray-800">1965</div>
               <div className="text-sm text-gray-500 tracking-widest mt-2">ESTD</div>
             </div>
           </motion.div>

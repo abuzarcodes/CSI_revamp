@@ -1,9 +1,16 @@
 "use client";
-import { motion } from "framer-motion";
-import { BookOpen, Calendar, Globe, Users } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { BookOpen, Calendar, Globe, Users, LucideIcon } from "lucide-react";
 // import { FaUsers, FaCalendarAlt, FaProjectDiagram, FaAward } from "react-icons/fa";
 
-const stats = [
+interface Stat {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+  description: string;
+}
+
+const stats: Stat[] = [
   {
     icon: Users,
     label: "Members",
@@ -30,7 +37,7 @@ const stats = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -41,20 +48,18 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 15,
     },
   },
 };
-
-
 
 export default function ClubInfoSection() {
   return (
@@ -69,11 +74,9 @@ export default function ClubInfoSection() {
           backgroundSize: "60px 60px",
         }}
       />
-
       {/* Blue ambient glows */}
       <div className="absolute -top-40 left-1/3 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[160px]" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[140px]" />
-
       <motion.div
         className="relative max-w-7xl mx-auto px-6"
         initial="hidden"
@@ -89,14 +92,11 @@ export default function ClubInfoSection() {
           <span className="text-sm tracking-[0.3em] text-blue-400 uppercase">
             Computer Society of India
           </span>
-
           <h2 className="mt-6 text-5xl md:text-6xl font-semibold text-white">
             Club Overview
           </h2>
-
           <div className="mt-6 h-[2px] w-24 mx-auto bg-blue-500" />
         </motion.div>
-
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {stats.map((stat, index) => (
@@ -108,7 +108,6 @@ export default function ClubInfoSection() {
             >
               {/* Hover glow */}
               <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
-
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-6">
                   <stat.icon className="w-10 h-10 text-blue-500" />
@@ -116,15 +115,12 @@ export default function ClubInfoSection() {
                     0{index + 1}
                   </span>
                 </div>
-
                 <div className="text-4xl font-bold text-white mb-2">
                   {stat.value}
                 </div>
-
                 <div className="text-blue-300 font-medium mb-3">
                   {stat.label}
                 </div>
-
                 <p className="text-sm text-gray-400 leading-relaxed">
                   {stat.description}
                 </p>

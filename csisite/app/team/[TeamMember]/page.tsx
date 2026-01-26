@@ -1,8 +1,8 @@
 import React from "react";
 import { CurrentLeads } from "../TeamData";
 
-function page({ params }: { params: { TeamMember: string } }) {
-  const { TeamMember } = React.use(params);
+async function page({ params }: { params: Promise<{ TeamMember: string }> }) {
+  const { TeamMember } = await params;
 
   const theMember = CurrentLeads.find(
     (member) =>

@@ -18,7 +18,7 @@ function Navbar() {
           <a href="#about" className="mx-4 text-white hover:text-blue-600">
             About
           </a>
-          <a href="#events" className="mx-4 text-white hover:text-blue-600">
+          <a href="/events" className="mx-4 text-white hover:text-blue-600">
             Events
           </a>
           <a href="/team" className="mx-4 text-white hover:text-blue-600">

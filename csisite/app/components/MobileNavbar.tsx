@@ -1,6 +1,5 @@
 "use client"
 import {Menu } from 'lucide-react'
-import { div, nav } from 'motion/react-client'
 import React, { useState } from 'react'
 
 function MobileNavbar() {

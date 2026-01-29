@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import LenisProvider from "./providers/LenisProvider";
 import Footer from "./components/Footer";
+import MobileNavbar from "./components/MobileNavbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
+        <MobileNavbar/>
         <LenisProvider>{children}</LenisProvider>
         {<Footer/>}
       </body>

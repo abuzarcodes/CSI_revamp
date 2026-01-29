@@ -83,7 +83,7 @@ export function Hero() {
 
           {/* Year marker */}
           <motion.div
-            className="absolute bottom-32 right-8 md:right-24"
+            className="absolute bottom-100 md:bottom-32 right-8 md:right-24"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}

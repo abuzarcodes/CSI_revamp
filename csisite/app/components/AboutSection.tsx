@@ -38,7 +38,7 @@ function AboutSection() {
           ABOUT CSI
         </span>
 
-        <h1 className="text-5xl md:text-6xl font-semibold text-white leading-tight">
+        <h1 className="text-[10vw] md:text-6xl font-semibold text-white leading-tight">
           Building thinkers,
           <br />
           not just coders.
@@ -46,7 +46,7 @@ function AboutSection() {
 
         <div className="mt-6 h-[2px] w-24 bg-blue-500" />
 
-        <p className="mt-8 text-lg leading-relaxed text-gray-400 max-w-3xl text-justify">
+        <p className="mt-8 text-[4vw] px-4 md:px-0 md:text-lg leading-relaxed text-gray-400 max-w-3xl text-justify">
           The Computer Society of India (CSI), founded on March 6, 1965, stands
           as a premier organization dedicated to the advancement of computer
           engineering and technology. Our platform serves as a dynamic space for

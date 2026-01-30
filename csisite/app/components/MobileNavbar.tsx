@@ -1,5 +1,6 @@
 "use client"
 import {Menu } from 'lucide-react'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 function MobileNavbar() {
@@ -18,11 +19,11 @@ function MobileNavbar() {
      <nav className='w-full  h-screen  flex justify-center items-center fixed z-100 top-0 left-0 bg-black/20 backdrop-blur-md '>
     <div className='bg-black/50  border border-blue-500 w-screen h-[90%] rounded-2xl flex justify-centre items-center m-8 '>
         <ul className='flex justify-around  h-[80%] w-full items-center flex-col hover:text-blue-500 text-white text-2xl font-semibold'>
-            <li>Home</li>
-            <li>About</li>
-            <li>Events</li>
-            <li>Team</li>
-            <li>Contact</li>
+            <Link href={'/'}><li>Home</li></Link>
+            <Link href={'/#about'}><li>About</li></Link>
+            <Link href={'/events'}><li>Events</li></Link>
+            <Link href={'/teams'}><li>Team</li></Link>
+            {/* <Link href={'/home'}><li>Home</li></Link> */}
         <p onClick={()=>{
             setOpen(false)
         }} className='abosulte top-0 right-0 font-extrabold text-3xl'>X</p>

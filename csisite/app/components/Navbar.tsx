@@ -25,6 +25,9 @@ function Navbar() {
           <Link href="/events" className="mx-4 text-white hover:text-blue-600">
             Events
           </Link>
+          <Link href="/join-us" className="mx-4 text-white hover:text-blue-600">
+            Join Us
+          </Link>
           <Link href="/team" className="mx-4 text-white hover:text-blue-600">
             Team
           </Link>

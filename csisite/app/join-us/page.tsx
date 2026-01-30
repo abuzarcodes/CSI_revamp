@@ -6,7 +6,7 @@ import NavBar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import EventRegistrationForm from "@/components/EventRegistrationForm";
 import { Toaster } from "@/components/ui/toaster";
-import { ToastProvider } from "@/components/ui/toaster";
+import { ToastProvider } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
 import { Event, EventsApiResponse, RegistrationFormData } from "@/types/events";
 

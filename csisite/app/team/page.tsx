@@ -79,6 +79,7 @@ function page() {
           TEAM MEMBERS
         </h1>
         <div className="flex justify-center gap-16 sm:gap-32 items-center relative mb-16">
+          <div className="bg-blue-500 w-full h-[0.6px] absolute top-2"></div>
           {years.map((year, index) => (
             <TimelineDot
               key={year}

@@ -15,7 +15,7 @@ function Navbar() {
           <a href="/" className="mx-4 text-white hover:text-blue-600">
             Home
           </a>
-          <a href="#about" className="mx-4 text-white hover:text-blue-600">
+          <a href="/#about" className="mx-4 text-white hover:text-blue-600">
             About
           </a>
           <a href="/events" className="mx-4 text-white hover:text-blue-600">
@@ -24,9 +24,9 @@ function Navbar() {
           <a href="/team" className="mx-4 text-white hover:text-blue-600">
             Team
           </a>
-          <a href="#contact" className="mx-4 text-white hover:text-blue-600">
+          {/* <a href="#contact" className="mx-4 text-white hover:text-blue-600">
             Contact
-          </a>
+          </a> */}
         </div>
       </div>
     </motion.div>

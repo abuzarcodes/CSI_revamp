@@ -13,7 +13,11 @@ interface TeamMember {
   skills?: string[];
 }
 
-export default function Page({ params }: { params: Promise<{ TeamMember: string }> }) {
+export default function Page({
+  params,
+}: {
+  params: Promise<{ TeamMember: string }>;
+}) {
   const { TeamMember } = React.use(params);
 
   const [loading, setLoading] = useState(true);
@@ -107,8 +111,7 @@ export default function Page({ params }: { params: Promise<{ TeamMember: string 
               About
             </h3>
             <p className="text-gray-300 max-w-3xl leading-relaxed">
-              {theMember.bio ??
-                "An active contributor to the CSI community, passionate about building meaningful digital experiences and leading collaborative initiatives."}
+              {theMember.bio ?? "No biography available for this team member."}
             </p>
           </section>
 
@@ -118,14 +121,7 @@ export default function Page({ params }: { params: Promise<{ TeamMember: string 
               Skills
             </h3>
             <div className="flex flex-wrap gap-3">
-              {(
-                theMember.skills ?? [
-                  "Leadership",
-                  "Technology",
-                  "Community",
-                  "Communication",
-                ]
-              ).map((skill) => (
+              {(theMember.skills ?? ["Not Specified"]).map((skill) => (
                 <span
                   key={skill}
                   className="border border-blue-500/40 px-4 py-1 text-sm text-blue-300"

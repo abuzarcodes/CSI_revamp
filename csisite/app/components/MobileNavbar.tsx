@@ -44,7 +44,7 @@ function MobileNavbar() {
             href={"/join-us"}
             className="p-4 important:rounded-2xl border border-blue-500 bg-black/10 backdrop-blur-2xl hover:bg-black/30"
           >
-            Registor
+            Register
           </Link>
           {/* <Link href={'/home'}><li>Home</li></Link> */}
           <p

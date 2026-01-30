@@ -32,7 +32,7 @@ function Navbar() {
             href={"/join-us"}
             className="py-2 px-4 rounded-2xl border border-blue-500 bg-blue-500/10 backdrop-blur-2xl hover:bg-blue-500/30"
           >
-            Registor
+            Register
           </Link>
           {/* <a href="#contact" className="mx-4 text-white hover:text-blue-600">
             Contact

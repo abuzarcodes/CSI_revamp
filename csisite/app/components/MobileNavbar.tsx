@@ -37,9 +37,6 @@ function MobileNavbar() {
           <Link href={"/events"}>
             <li>Events</li>
           </Link>
-          <Link href={"/join-us"}>
-            <li>Join Us</li>
-          </Link>
           <Link href={"/team"}>
             <li>Team</li>
           </Link>

@@ -1,13 +1,70 @@
-import React from "react";
-import { CurrentLeads } from "../TeamData";
+"use client";
 
-async function page({ params }: { params: Promise<{ TeamMember: string }> }) {
-  const { TeamMember } = await params;
+import React, { useEffect, useState } from "react";
 
-  const theMember = CurrentLeads.find(
+interface TeamMember {
+  id: string;
+  imageUrl: string;
+  title: string;
+  subtitle: string;
+  linkedin?: string;
+  github?: string;
+  bio?: string;
+  skills?: string[];
+}
+
+export default function Page({ params }: { params: Promise<{ TeamMember: string }> }) {
+  const { TeamMember } = React.use(params);
+
+  const [loading, setLoading] = useState(true);
+  const [teamData, setTeamData] = useState<{
+    currentLeads: TeamMember[];
+    "2024-2025Leads": TeamMember[];
+    "2023Leads": TeamMember[];
+    "2022Leads": TeamMember[];
+  }>({
+    currentLeads: [],
+    "2024-2025Leads": [],
+    "2023Leads": [],
+    "2022Leads": [],
+  });
+
+  useEffect(() => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setTeamData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load team data:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  const allMembers: TeamMember[] = [
+    ...teamData.currentLeads,
+    ...teamData["2024-2025Leads"],
+    ...teamData["2023Leads"],
+    ...teamData["2022Leads"],
+  ];
+
+  const normalizedSlug = TeamMember.toLowerCase();
+
+  const theMember = allMembers.find(
     (member) =>
-      member.title.replace(" ", "").toLowerCase() === TeamMember.toLowerCase(),
+      member.title.replace(/\s+/g, "").toLowerCase() === normalizedSlug,
   );
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <span className="text-blue-500 text-sm tracking-widest animate-pulse">
+          LOADING PROFILE
+        </span>
+      </div>
+    );
+  }
 
   if (!theMember) {
     return (
@@ -20,57 +77,55 @@ async function page({ params }: { params: Promise<{ TeamMember: string }> }) {
   return (
     <section className="min-h-screen bg-[#0a0a0a] text-white px-6 py-20">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-4 gap-12">
-        {/* LEFT – PROFILE SIDEBAR */}
+        {/* LEFT SIDEBAR */}
         <aside className="lg:col-span-1">
           <img
             src={theMember.imageUrl}
             alt={theMember.title}
-            className="w-full rounded-bl-3xl rounded-tr-3xl hover:rounded-br-3xl hover:rounded-tl-3xl hover:rounded-tr-none hover:rounded-bl-none transition-all duration-500 ease-in-out border border-blue-500/30"
+            className="w-full rounded-bl-3xl rounded-tr-3xl border border-blue-500/30 hover:rounded-none transition-all duration-500"
           />
 
           <h2 className="mt-6 text-2xl font-semibold">{theMember.title}</h2>
-
           <p className="text-blue-400 mt-1">{theMember.subtitle}</p>
 
-          {/* Action */}
-          <a
-            href={theMember.linkedin}
-            target="_blank"
-            className="mt-6 inline-flex items-center justify-center w-full border border-blue-500/40 py-2 text-sm hover:bg-blue-500 hover:text-black transition"
-          >
-            View LinkedIn
-          </a>
+          {theMember.linkedin && (
+            <a
+              href={theMember.linkedin}
+              target="_blank"
+              className="mt-6 inline-flex justify-center w-full border border-blue-500/40 py-2 text-sm hover:bg-blue-500 hover:text-black transition"
+            >
+              View LinkedIn
+            </a>
+          )}
         </aside>
 
-        {/* RIGHT – CONTENT */}
+        {/* RIGHT CONTENT */}
         <main className="lg:col-span-3 space-y-12">
-          {/* Bio */}
+          {/* ABOUT */}
           <section>
-            <h3 className="mb-3 text-sm tracking-widest text-gray-400 uppercase">
+            <h3 className="text-xs tracking-widest text-gray-400 uppercase mb-3">
               About
             </h3>
-            <p className="leading-relaxed text-gray-300 max-w-3xl">
+            <p className="text-gray-300 max-w-3xl leading-relaxed">
               {theMember.bio ??
-                "Passionate about technology, creativity, and building meaningful digital experiences. Actively contributing to the CSI community through events, media, and collaborative projects."}
+                "An active contributor to the CSI community, passionate about building meaningful digital experiences and leading collaborative initiatives."}
             </p>
           </section>
 
-          {/* Skills */}
+          {/* SKILLS */}
           <section>
-            <h3 className="mb-4 text-sm tracking-widest text-gray-400 uppercase">
+            <h3 className="text-xs tracking-widest text-gray-400 uppercase mb-4">
               Skills
             </h3>
-
             <div className="flex flex-wrap gap-3">
               {(
                 theMember.skills ?? [
-                  "Design",
-                  "Content",
-                  "Editing",
-                  "Social Media",
-                  "Branding",
+                  "Leadership",
+                  "Technology",
+                  "Community",
+                  "Communication",
                 ]
-              ).map((skill: string) => (
+              ).map((skill) => (
                 <span
                   key={skill}
                   className="border border-blue-500/40 px-4 py-1 text-sm text-blue-300"
@@ -81,39 +136,11 @@ async function page({ params }: { params: Promise<{ TeamMember: string }> }) {
             </div>
           </section>
 
-          {/* Activity Section (GitHub-like)
+          {/* SOCIAL */}
           <section>
-            <h3 className="mb-4 text-sm tracking-widest text-gray-400 uppercase">
-              CSI Activity
-            </h3>
-
-            <div className="space-y-4">
-              <div className="border border-blue-500/20 p-4">
-                <p className="text-gray-300">
-                  Contributed to media coverage for CSI events and workshops.
-                </p>
-                <span className="text-xs text-gray-500">
-                  Jan 2026
-                </span>
-              </div>
-
-              <div className="border border-blue-500/20 p-4">
-                <p className="text-gray-300">
-                  Led content strategy for hackathon promotions.
-                </p>
-                <span className="text-xs text-gray-500">
-                  Dec 2025
-                </span>
-              </div>
-            </div>
-          </section> */}
-
-          {/* Social Links */}
-          <section>
-            <h3 className="mb-4 text-sm tracking-widest text-gray-400 uppercase">
+            <h3 className="text-xs tracking-widest text-gray-400 uppercase mb-4">
               Social
             </h3>
-
             <div className="flex gap-6 text-sm">
               {theMember.linkedin && (
                 <a
@@ -124,7 +151,7 @@ async function page({ params }: { params: Promise<{ TeamMember: string }> }) {
                   LinkedIn
                 </a>
               )}
-              {/* {theMember.github && (
+              {theMember.github && (
                 <a
                   href={theMember.github}
                   className="text-blue-400 hover:underline"
@@ -132,7 +159,7 @@ async function page({ params }: { params: Promise<{ TeamMember: string }> }) {
                 >
                   GitHub
                 </a>
-              )} */}
+              )}
             </div>
           </section>
         </main>
@@ -140,13 +167,3 @@ async function page({ params }: { params: Promise<{ TeamMember: string }> }) {
     </section>
   );
 }
-
-export default page;
-
-//  {
-//             "id": "2026_1",
-//             "title": "Parth Mongia",
-//             "subtitle": "President",
-//             "imageUrl": "https://res.cloudinary.com/dzturswbu/image/upload/v1768964369/d52d4b3d-b413-498d-b57f-b64fa8287a16_e0mmxv.jpg",
-//             "linkedin": "https://www.linkedin.com/in/parth308/"
-//         }

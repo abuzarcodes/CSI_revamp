@@ -14,7 +14,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id='#home' className="relative min-h-screen flex items-center overflow-hidden">
+    <section id='#home' className="relative min-h-screen flex items-center overflow-hidden bg-black">
       {/* Animated blue lines */}
       <motion.div
         className="absolute top-0 left-0 w-px bg-blue-500"

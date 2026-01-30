@@ -10,7 +10,13 @@ import {
   MailIcon,
 } from "lucide-react";
 
-const SocialIcon = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
+const SocialIcon = ({
+  href,
+  icon,
+}: {
+  href: string;
+  icon: React.ReactNode;
+}) => (
   <a
     href={href}
     target="_blank"
@@ -23,8 +29,7 @@ const SocialIcon = ({ href, icon }: { href: string; icon: React.ReactNode }) => 
 
 export default function Footer() {
   return (
-    <footer className="relative bg-blue-500/6 text-gray-400 overflow-hidden">
-      
+    <footer className="relative important:bg-blue-500/6 text-gray-400 overflow-hidden">
       {/* Grid background */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -40,7 +45,6 @@ export default function Footer() {
 
       <div className="relative max-w-7xl mx-auto px-6 py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-
           {/* Logo & Identity */}
           <div>
             <div className="flex items-center gap-4 mb-6">
@@ -52,9 +56,7 @@ export default function Footer() {
                 className="rounded-full bg-blue-500/10 border border-blue-500/30 p-2"
               />
               <div>
-                <h3 className="text-lg font-semibold text-white">
-                  CSI SRMIST
-                </h3>
+                <h3 className="text-lg font-semibold text-white">CSI SRMIST</h3>
                 <p className="text-sm text-blue-400 tracking-wide">
                   Delhi-NCR Campus
                 </p>

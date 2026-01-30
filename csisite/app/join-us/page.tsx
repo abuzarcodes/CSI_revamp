@@ -10,7 +10,6 @@ import { ToastProvider } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
 import { Event, EventsApiResponse, RegistrationFormData } from "@/types/events";
 
-
 export default function JoinUs() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);

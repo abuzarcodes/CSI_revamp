@@ -22,7 +22,7 @@ function MobileNavbar() {
             <Link href={'/'}><li>Home</li></Link>
             <Link href={'/#about'}><li>About</li></Link>
             <Link href={'/events'}><li>Events</li></Link>
-            <Link href={'/teams'}><li>Team</li></Link>
+            <Link href={'/team'}><li>Team</li></Link>
             {/* <Link href={'/home'}><li>Home</li></Link> */}
         <p onClick={()=>{
             setOpen(false)

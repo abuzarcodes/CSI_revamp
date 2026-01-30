@@ -55,7 +55,7 @@ function FacultyCard({ name, position, image, description }: FacultyCardProps) {
 
         {/* Content */}
         <div className=" md:col-span-3">
-          <span className="text-xs tracking-widest text-blue-400 uppercase">
+          <span className="text-xs md:text-lg tracking-widest text-blue-400 uppercase">
             Faculty Advisor
           </span>
 
@@ -68,7 +68,7 @@ function FacultyCard({ name, position, image, description }: FacultyCardProps) {
           {/* Divider */}
           <div className="mt-4 h-[1px] w-20 bg-blue-500" />
 
-          <p className="mt-6 text-[2.5vw] text-gray-300 leading-relaxed">
+          <p className="mt-6 text-[2.5vw] md:text-2xl text-gray-300 leading-relaxed">
             {description}
           </p>
         </div>

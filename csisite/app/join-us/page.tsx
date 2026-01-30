@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ToastProvider } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
 import { Event, EventsApiResponse, RegistrationFormData } from "@/types/events";
+import { Nav } from "react-day-picker";
 
 export default function JoinUs() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -24,7 +25,7 @@ export default function JoinUs() {
         const response = await fetch("/api/admin/events");
         if (!response.ok) throw new Error("Failed to fetch events");
         const data: EventsApiResponse = await response.json();
-        
+
         if (isMounted) {
           setEvents(
             data.events
@@ -32,7 +33,7 @@ export default function JoinUs() {
               .map((event) => ({
                 ...event,
                 teamSize: event.teamSize || 1,
-              }))
+              })),
           );
         }
       } catch (error) {
@@ -59,7 +60,7 @@ export default function JoinUs() {
   }, [toast]);
 
   const handleSubmit = async (
-    formData: RegistrationFormData
+    formData: RegistrationFormData,
   ): Promise<boolean> => {
     try {
       console.log("Submitting form data:", formData);
@@ -113,7 +114,7 @@ export default function JoinUs() {
           {/* Team Members Section Skeleton */}
           <div className="space-y-3 sm:space-y-4">
             <div className="h-6 sm:h-7 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-            
+
             {/* Member Card Skeleton */}
             <div className="bg-gray-50 dark:bg-blue-900/10 rounded-xl border-0 md:border md:border-gray-200 md:dark:border-blue-800 overflow-hidden">
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-700 dark:to-blue-800 h-8 sm:h-10"></div>
@@ -123,14 +124,14 @@ export default function JoinUs() {
                   <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
                   <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
                 </div>
-                
+
                 {/* Academic Info Row */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
                   <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
                   <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
                   <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
                 </div>
-                
+
                 {/* Contact Info Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
@@ -173,7 +174,7 @@ export default function JoinUs() {
             </AnimatePresence>
           </div>
         </main>
-        
+
         <Toaster />
       </div>
     </ToastProvider>

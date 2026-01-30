@@ -12,7 +12,7 @@ function MobileNavbar() {
           onClick={() => {
             setOpen(true);
           }}
-          className=""
+          className="text-white"
         >
           <Menu />
         </button>
@@ -42,7 +42,7 @@ function MobileNavbar() {
           </Link>
           <Link
             href={"/join-us"}
-            className="p-4 important:rounded-2xl border border-blue-500 bg-black/10 backdrop-blur-2xl hover:bg-black/30"
+            className="p-4 rounded-2xl border text-white border-blue-500 bg-black/10 backdrop-blur-2xl hover:bg-black/30"
           >
             Register
           </Link>
@@ -53,7 +53,7 @@ function MobileNavbar() {
             }}
             className="abosulte top-0 right-0 font-extrabold text-3xl"
           >
-            <Cross />
+            X
           </p>
         </ul>
       </div>

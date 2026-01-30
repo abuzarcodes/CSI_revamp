@@ -127,6 +127,7 @@ export default function AdminDashboard() {
   const [selectedExportEvent, setSelectedExportEvent] = useState<string>("");
 
   useEffect(() => {
+    document.querySelector("footer")?.classList.add("hidden");
     if (status === "unauthenticated") {
       window.location.href = "/admin/login";
     }

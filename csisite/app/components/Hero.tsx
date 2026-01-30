@@ -17,7 +17,7 @@ export function Hero() {
     <section id='#home' className="relative min-h-screen flex items-center overflow-hidden bg-black">
       {/* Animated blue lines */}
       <motion.div
-        className="absolute top-0 left-0 w-px bg-blue-500"
+        className="absolute top-0 ml-3 md:ml-0 md:left-0 w-px bg-blue-500"
         style={{ height: '40vh', left: '15%' }}
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
@@ -57,7 +57,7 @@ export function Hero() {
               </span>
             </div>
             
-            <h1 className="text-6xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tight mb-8 max-w-5xl">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tight mb-8 max-w-5xl text-white">
               Code
               <br />
               <span className="text-blue-500">Culture</span>

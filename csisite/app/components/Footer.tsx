@@ -29,7 +29,7 @@ const SocialIcon = ({
 
 export default function Footer() {
   return (
-    <footer className="relative important:bg-blue-500/6 text-gray-400 overflow-hidden">
+    <footer className="relative bg-blue-500/6 text-gray-400 overflow-hidden">
       {/* Grid background */}
       <div
         className="absolute inset-0 opacity-[0.04]"

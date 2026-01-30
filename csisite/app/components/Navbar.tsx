@@ -30,7 +30,7 @@ function Navbar() {
           </Link>
           <Link
             href={"/join-us"}
-            className="py-2 px-4 rounded-2xl border border-blue-500 bg-blue-500/10 backdrop-blur-2xl hover:bg-blue-500/30"
+            className="py-2 px-4 rounded-2xl border text-white border-blue-500 bg-blue-500/10 backdrop-blur-2xl hover:bg-blue-500/30"
           >
             Register
           </Link>

@@ -144,7 +144,7 @@ const Timeline = () => {
   }, [currentYear]);
 
   return (
-    <div className="inset-0 w-screen h-screen overflow-hidden bg-black text-white relative">
+    <div className="inset-0 w-screen min-h-screen md:h-screen md:overflow-hidden bg-black text-white relative">
       {/* Grid overlay */}
       <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -191,12 +191,12 @@ const Timeline = () => {
         </div>
       </div>
 
-      <div className="flex w-full h-[calc(100vh-3rem)]">
+      <div className="flex w-full flex-col md:flex-row md:h-[calc(100vh-3rem)]">
         {/* Left Timeline Sidebar */}
         <div
           className={`${
             sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-          } fixed md:static z-40 w-72 bg-black border-r border-gray-800 flex flex-col h-[calc(100vh-3rem)] transition-transform duration-200`}
+          } fixed md:static z-40 w-72 bg-black border-r border-gray-800 flex flex-col h-[calc(100vh-3rem)] md:h-[calc(100vh-3rem)] transition-transform duration-200`}
         >
           {/* Header */}
           <div className="h-14 border-b border-gray-800 flex items-center px-6">
@@ -271,7 +271,7 @@ const Timeline = () => {
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto mt-12 md:mt-0">
           <div className="max-w-5xl mx-auto p-6 md:p-12 lg:p-16">
             {/* Header Section */}
             <div className="mb-12 border-b border-gray-800 pb-8">

@@ -20,7 +20,7 @@ function MobileNavbar() {
     );
   }
   return (
-    <nav className="w-full  h-screen  flex justify-center items-center fixed z-100 top-0 left-0 bg-black/20 backdrop-blur-md ">
+    <nav className="w-full md:hidden  h-screen  flex justify-center items-center fixed z-100 top-0 left-0 bg-black/20 backdrop-blur-md ">
       <div className="bg-black/50  border border-blue-500 w-screen h-[90%] rounded-2xl flex justify-centre items-center m-8 ">
         <ul
           onClick={() => {

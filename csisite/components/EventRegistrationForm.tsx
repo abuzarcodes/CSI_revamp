@@ -145,7 +145,7 @@ interface InputFieldProps extends FieldProps {
 }
 const InputField = ({ id, label, icon: Icon, type = "text", placeholder, value, onChange, required = false }: InputFieldProps) => (
   <div className="w-full">
-    <Label htmlFor={id} className="text-sm font-medium text-gray-700 dark:text-cyan-300 mb-1 block">
+    <Label htmlFor={id} className="text-sm font-medium text-white mb-1 block">
       {label} {required && <span className="text-red-500">*</span>}
     </Label>
     <div className="relative">
@@ -160,7 +160,7 @@ const InputField = ({ id, label, icon: Icon, type = "text", placeholder, value, 
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="pl-8 py-2.5 h-10 bg-gray-50 dark:bg-blue-900/20 border-gray-300 dark:border-blue-800 rounded-lg text-gray-900 dark:text-cyan-100 placeholder:text-gray-500 dark:placeholder:text-blue-400 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 focus:border-blue-500 dark:focus:border-cyan-400 transition-colors"
+        className="pl-8 py-2.5 h-10 bg-blue-900/20 border-blue-500 rounded-lg text-white/80 placeholder:text-blue-400 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 focus:border-blue-500 dark:focus:border-cyan-400 transition-colors"
       />
     </div>
   </div>
@@ -173,23 +173,23 @@ interface SelectFieldProps extends FieldProps {
 }
 const SelectField = ({ id, label, icon: Icon, options, value, onChange, required = false }: SelectFieldProps) => (
   <div className="w-full">
-    <Label htmlFor={id} className="text-sm font-medium text-gray-700 dark:text-cyan-300 mb-1 block">
+    <Label htmlFor={id} className="text-sm font-medium text-white mb-1 block">
       {label} {required && <span className="text-red-500">*</span>}
     </Label>
     <div className="relative">
-      <div className="absolute left-2.5 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-cyan-400 z-10">
+      <div className="absolute left-2.5 top-1/2 transform -translate-y-1/2 text-white/80 z-10">
         <Icon className="w-4 h-4" />
       </div>
       <Select value={value} onValueChange={onChange} required={required}>
-        <SelectTrigger className="w-full pl-8 pr-3 py-2.5 h-10 bg-gray-50 dark:bg-blue-900/20 border border-gray-300 dark:border-blue-800 rounded-lg text-gray-900 dark:text-cyan-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 focus:border-blue-500 dark:focus:border-cyan-400 text-sm">
+        <SelectTrigger className="w-full pl-8 pr-3 py-2.5 h-1 bg-blue-900/20 border border-blue-500 rounded-lg text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 focus:border-blue-500 dark:focus:border-cyan-400 text-sm">
           <SelectValue placeholder={`Select ${label.toLowerCase()}`} />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="bg-black/80 border border-blue-500 ">
           {options.map((option) => (
             <SelectItem
               key={option.value}
               value={option.value}
-              className="text-gray-900 dark:text-cyan-100 bg-white dark:bg-blue-900 hover:bg-gray-100 dark:hover:bg-blue-800 cursor-pointer"
+              className="text-white border border-blue-500   cursor-pointer"
             >
               {option.label}
             </SelectItem>
@@ -218,7 +218,7 @@ const QuestionField = ({ question, answer, onChange }: QuestionFieldProps) => {
     case 'mcq':
       return (
         <div className="space-y-3">
-          <Label className="text-sm font-medium text-gray-700 dark:text-cyan-300">
+          <Label className="text-sm font-medium text-white">
             {question.question} {question.required && <span className="text-red-500">*</span>}
           </Label>
           <RadioGroup
@@ -231,11 +231,11 @@ const QuestionField = ({ question, answer, onChange }: QuestionFieldProps) => {
                 <RadioGroupItem
                   value={option}
                   id={`${question.id}-${index}`}
-                  className="border-gray-300 dark:border-blue-800 text-blue-600 dark:text-cyan-400"
+                  className="border-blue-800 text-white"
                 />
                 <Label
                   htmlFor={`${question.id}-${index}`}
-                  className="text-sm text-gray-700 dark:text-cyan-100 cursor-pointer"
+                  className="text-sm text-white/80 cursor-pointer"
                 >
                   {option}
                 </Label>
@@ -247,7 +247,7 @@ const QuestionField = ({ question, answer, onChange }: QuestionFieldProps) => {
     case 'textarea':
       return (
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700 dark:text-cyan-300">
+          <Label className="text-sm font-medium text-white">
             {question.question} {question.required && <span className="text-red-500">*</span>}
           </Label>
           <Textarea
@@ -255,7 +255,7 @@ const QuestionField = ({ question, answer, onChange }: QuestionFieldProps) => {
             onChange={(e) => handleChange(e.target.value)}
             placeholder={question.placeholder}
             maxLength={question.maxLength}
-            className="bg-gray-50 dark:bg-blue-900/20 border-gray-300 dark:border-blue-800 rounded-lg text-gray-900 dark:text-cyan-100 placeholder:text-gray-500 dark:placeholder:text-blue-400 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 focus:border-blue-500 dark:focus:border-cyan-400 transition-colors min-h-[100px]"
+            className="bg-blue-900/20 border-blue-500 rounded-lg text-white/80 placeholder:text-blue-400 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 focus:border-blue-500 dark:focus:border-cyan-400 transition-colors min-h-[100px]"
           />
           {question.maxLength && (
             <div className="text-xs text-gray-500 dark:text-blue-400 text-right">
@@ -886,7 +886,7 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
       // Event Selection
       return (
         <div className="space-y-4">
-          <h3 className="text-lg sm:text-xl lg:text-2xl text-gray-800 dark:text-cyan-300 font-semibold">
+          <h3 className="text-lg sm:text-xl lg:text-2xl text-white font-semibold">
             Event Selection
           </h3>
           <SelectField
@@ -902,7 +902,7 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
             required
           />
           {currentEvent && (
-            <div className="text-xs sm:text-sm text-blue-700 dark:text-cyan-400 bg-blue-50 dark:bg-blue-900/30 p-3 rounded-lg">
+            <div className="text-xs sm:text-sm text-white bg-blue-900/30 p-3 rounded-lg">
               <div className="font-medium mb-1">Event Details:</div>
               <div>Type: {currentEvent.eventType === 'team_registration' ? 'Team Registration' : 'Recruitment'}</div>
               {currentEvent.eventType === 'team_registration' && (
@@ -928,7 +928,7 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
       
       return (
         <div className="space-y-4">
-          <h3 className="text-lg sm:text-xl lg:text-2xl text-gray-800 dark:text-cyan-300 font-semibold">
+          <h3 className="text-lg sm:text-xl lg:text-2xl text-white font-semibold">
             Member {memberIndex + 1} Information
           </h3>
           <div className="space-y-4">
@@ -1019,7 +1019,7 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
         const participant = formData.participant
         return (
           <div className="space-y-4">
-            <h3 className="text-lg sm:text-xl lg:text-2xl text-gray-800 dark:text-cyan-300 font-semibold">
+            <h3 className="text-lg sm:text-xl lg:text-2xl text-white font-semibold">
               Personal Information
             </h3>
             <div className="space-y-4">
@@ -1033,6 +1033,7 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
                   value={participant.name}
                   onChange={(value) => handleParticipantChange("name", value)}
                   required
+
                 />
                 <InputField
                   id="participant-registrationNumber"
@@ -1108,15 +1109,15 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
         // Common Questions
         return (
           <div className="space-y-4">
-            <h3 className="text-lg sm:text-xl lg:text-2xl text-gray-800 dark:text-cyan-300 font-semibold">
+            <h3 className="text-lg sm:text-xl lg:text-2xl text-white font-semibold">
               General Questions
             </h3>
             <div className="space-y-6">
               {currentEvent.commonQuestions.map((question, index) => {
                 const existingAnswer = formData.participant!.commonAnswers.find(a => a.questionId === question.id)
                 return (
-                  <div key={question.id} className="p-4 bg-gray-50 dark:bg-blue-900/10 rounded-lg border border-gray-200 dark:border-blue-800">
-                    <div className="mb-2 text-sm font-medium text-blue-600 dark:text-cyan-400">
+                  <div key={question.id} className="p-4 bg-blue-900/10 rounded-lg border border-blue-500">
+                    <div className="mb-2 text-sm font-medium text-white">
                       Question {index + 1}
                     </div>
                     <QuestionField
@@ -1137,41 +1138,41 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
         // Team Selection
         return (
           <div className="space-y-4">
-            <h3 className="text-lg sm:text-xl lg:text-2xl text-gray-800 dark:text-cyan-300 font-semibold">
+            <h3 className="text-lg sm:text-xl lg:text-2xl text-white font-semibold">
               Select Teams
             </h3>
             {currentEvent.allowMultipleTeamSelection && (
-              <div className="text-sm text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-blue-900/30 p-3 rounded-lg">
+              <div className="text-sm text-white bg-blue-900/30 p-3 rounded-lg">
                 You can select multiple teams for this event.
               </div>
             )}
             <div className="space-y-4">
               {currentEvent.teams?.map((team) => (
-                <div key={team.id} className="border border-gray-200 dark:border-blue-800 rounded-lg overflow-hidden">
-                  <div className="p-4 bg-gray-50 dark:bg-blue-900/10">
+                <div key={team.id} className="border border-blue-800 rounded-lg overflow-hidden">
+                  <div className="p-4 bg-blue-900/10">
                     <div className="flex items-center space-x-3">
                       <Checkbox
                         id={`team-${team.id}`}
                         checked={formData.participant!.selectedTeams.includes(team.id)}
                         onCheckedChange={(checked) => handleTeamSelection(team.id, checked as boolean)}
-                        className="border-gray-300 dark:border-blue-800"
+                        className="border-blue-800"
                       />
                       <div className="flex-1">
-                        <Label htmlFor={`team-${team.id}`} className="text-lg font-semibold text-gray-800 dark:text-cyan-300 cursor-pointer">
+                        <Label htmlFor={`team-${team.id}`} className="text-lg font-semibold text-white/80 cursor-pointer">
                           {team.name}
                         </Label>
                         {team.description && (
-                          <p className="text-sm text-gray-600 dark:text-blue-300 mt-1">
+                          <p className="text-sm text-white/80 mt-1">
                             {team.description}
                           </p>
                         )}
                         {team.maxMembers && (
-                          <p className="text-xs text-gray-500 dark:text-blue-400 mt-1">
+                          <p className="text-xs text-white/80 mt-1">
                             Max members: {team.maxMembers}
                           </p>
                         )}
                         {team.questions && team.questions.length > 0 && (
-                          <p className="text-xs text-blue-600 dark:text-cyan-400 mt-1">
+                          <p className="text-xs text-white/80 mt-1">
                             This team has {team.questions.length} additional question{team.questions.length > 1 ? 's' : ''}
                           </p>
                         )}
@@ -1205,7 +1206,7 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
             </h3>
             {selectedTeams.map((team) => (
               <div key={team.id} className="space-y-4">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-700 dark:to-blue-800 p-3 rounded-lg">
+                <div className="bg-gradient-to-r from-blue-700 to-blue-800 p-3 rounded-lg">
                   <h4 className="text-lg font-semibold text-white">
                     {team.name}
                   </h4>
@@ -1215,8 +1216,8 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
                     const teamAnswers = formData.participant!.teamAnswers.find(ta => ta.teamId === team.id)
                     const existingAnswer = teamAnswers?.answers.find(a => a.questionId === question.id)
                     return (
-                      <div key={question.id} className="p-4 bg-gray-50 dark:bg-blue-900/10 rounded-lg border border-gray-200 dark:border-blue-800">
-                        <div className="mb-2 text-sm font-medium text-blue-600 dark:text-cyan-400">
+                      <div key={question.id} className="p-4 bg-blue-900/10 rounded-lg border border-blue-500">
+                        <div className="mb-2 text-sm font-medium text-white/80">
                           Question {index + 1}
                         </div>
                         <QuestionField
@@ -1262,11 +1263,11 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
       className="w-full px-2 sm:px-3 md:px-4 lg:px-6 min-h-screen py-3 sm:py-4"
     >
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-        <Card className="bg-white dark:bg-blue-900/20 border-0 md:border md:border-gray-200 md:dark:border-blue-800 shadow-lg dark:shadow-cyan-900/20 rounded-xl overflow-hidden">
+        <Card className="bg-blue-500/5 border-0 md:border md:border-blue-500  shadow-2xl shadow-blue-500/20 text-white rounded-xl overflow-hidden">
           <CardContent className="p-2 sm:p-3 md:p-4 lg:p-6 space-y-4 sm:space-y-6">
             {/* Auto-save indicator */}
             {lastSaved && !showSuccess && (
-              <div className="flex items-center justify-end text-xs text-gray-500 dark:text-blue-400">
+              <div className="flex items-center justify-end text-xstext-blue-400">
                 <Save className="w-3 h-3 mr-1" />
                 <span>Auto-saved at {lastSaved.toLocaleTimeString()}</span>
               </div>
@@ -1283,7 +1284,7 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
                           ? 'bg-green-500 text-white'
                           : index === currentStep
                           ? 'bg-blue-500 text-white'
-                          : 'bg-gray-300 dark:bg-blue-800 text-gray-600 dark:text-blue-400'
+                          : 'bg-blue-800 text-blue-400'
                       }`}>
                         {index < currentStep ? <CheckCircle className="w-4 h-4" /> : index + 1}
                       </div>
@@ -1317,13 +1318,13 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
             
             {/* Navigation Buttons */}
             {!showSuccess && (
-              <div className="flex justify-between pt-6 border-t border-gray-200 dark:border-blue-800">
+              <div className="flex justify-between pt-6 border-t border-blue-800">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={handlePrevious}
                   disabled={currentStep === 0}
-                  className="flex items-center space-x-2 bg-white dark:bg-blue-900/20 border-gray-300 dark:border-blue-800 text-gray-700 dark:text-cyan-100 hover:bg-gray-50 dark:hover:bg-blue-800/50"
+                  className="flex items-center space-x-2 bg-blue-900/20 border-blue-500 text-blue-500 hover:bg-blue-800/50"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   <span>Previous</span>
@@ -1332,7 +1333,7 @@ export default function EventRegistrationForm({ events = [], onSubmit }: EventRe
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-700 dark:to-blue-800 dark:hover:from-blue-800 dark:hover:to-blue-900 text-white shadow-lg hover:shadow-xl"
+                    className="flex items-center space-x-2 bg-gradient-to-r  from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white shadow-lg hover:shadow-xl"
                   >
                     {isSubmitting ? (
                       <>

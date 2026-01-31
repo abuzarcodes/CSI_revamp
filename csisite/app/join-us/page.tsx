@@ -102,7 +102,7 @@ export default function JoinUs() {
   // Skeleton loading component
   const LoadingSkeleton = () => (
     <div className="max-w-4xl mx-auto w-full px-2 sm:px-3 md:px-4 lg:px-6 animate-pulse">
-      <div className="bg-white dark:bg-blue-900/20 border-0 md:border md:border-gray-200 md:dark:border-blue-800 shadow-lg dark:shadow-cyan-900/20 rounded-xl overflow-hidden">
+      <div className="bg-blue-900/20 border-0 md:border md:border-gray-200 md:dark:border-blue-800 shadow-lg dark:shadow-cyan-900/20 rounded-xl overflow-hidden">
         <div className="p-2 sm:p-3 md:p-4 lg:p-6 space-y-4 sm:space-y-6">
           {/* Event Selection Skeleton */}
           <div className="space-y-2 sm:space-y-3">
@@ -152,8 +152,8 @@ export default function JoinUs() {
 
   return (
     <ToastProvider>
-      <div className="min-h-screen flex flex-col bg-white text-gray-900 relative">
-        <div className="absolute top-0 w-full h-[100%] dark:from-[#05050A] dark:via-[#0B1A2D] dark:to-[#04070F] bg-gradient-to-b from-white to-[#f0f9ff] z-0" />
+      <div className="min-h-screen flex flex-col bg-black text-gray-900 relative">
+        <div className="absolute top-0 w-full h-[100%] bg-gradient-to-b from-[#05050A] via-black to-blue-500/5  z-0" />
         <main className="flex-grow pt-20 relative z-1">
           <div className="container mx-auto px-4 py-12">
             <h1 className="text-4xl font-bold text-center mb-8 text-blue-400">

@@ -21,11 +21,12 @@ const Timeline = () => {
   const [currentYear, setCurrentYear] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(true);
-  const [autoScrollPaused, setAutoScrollPaused] = useState(false);
   const [userActive, setUserActive] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const autoScrollTimerRef = useRef<NodeJS.Timeout | null>(null);
   const userActivityTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const scrollCooldownRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartYRef = useRef(0);
 
   const currentData = TimelineData[currentYear];
 
@@ -35,7 +36,6 @@ const Timeline = () => {
 
   const handleYearClick = (index: number) => {
     setCurrentYear(index);
-    resetAutoScrollTimer();
     registerUserActivity();
     if (window.innerWidth < 768) {
       setSidebarOpen(false);
@@ -48,13 +48,50 @@ const Timeline = () => {
     } else if (direction === "down" && currentYear < TimelineData.length - 1) {
       setCurrentYear(currentYear + 1);
     }
-    resetAutoScrollTimer();
     registerUserActivity();
+  };
+
+  const triggerScrollNavigation = (direction: "up" | "down") => {
+    const atTop = direction === "up" && currentYear === 0;
+    const atBottom =
+      direction === "down" && currentYear === TimelineData.length - 1;
+
+    if (scrollCooldownRef.current || atTop || atBottom) {
+      return;
+    }
+
+    scrollCooldownRef.current = true;
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    scrollTimeoutRef.current = setTimeout(() => {
+      scrollCooldownRef.current = false;
+    }, 600);
+
+    navigateTimeline(direction);
+  };
+
+  const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const deltaY = event.deltaY;
+    if (Math.abs(deltaY) < 10) return;
+    const direction = deltaY > 0 ? "down" : "up";
+    triggerScrollNavigation(direction);
+  };
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touchStartYRef.current = event.touches[0]?.clientY ?? 0;
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    const endY = event.changedTouches[0]?.clientY ?? 0;
+    const deltaY = touchStartYRef.current - endY;
+    if (Math.abs(deltaY) < 30) return;
+    triggerScrollNavigation(deltaY > 0 ? "down" : "up");
   };
 
   const registerUserActivity = () => {
     setUserActive(true);
-    setAutoScrollPaused(true);
 
     if (userActivityTimerRef.current) {
       clearTimeout(userActivityTimerRef.current);
@@ -62,39 +99,18 @@ const Timeline = () => {
 
     userActivityTimerRef.current = setTimeout(() => {
       setUserActive(false);
-      setAutoScrollPaused(false);
     }, 5000);
-  };
-
-  const resetAutoScrollTimer = () => {
-    if (autoScrollTimerRef.current) {
-      clearTimeout(autoScrollTimerRef.current);
-    }
-
-    if (!autoScrollPaused) {
-      autoScrollTimerRef.current = setTimeout(() => {
-        if (currentYear < TimelineData.length - 1) {
-          setCurrentYear((prev) => prev + 1);
-        } else {
-          setCurrentYear(0);
-        }
-      }, 10000);
-    }
   };
 
   useEffect(() => {
     hideFooter();
-    resetAutoScrollTimer();
 
     return () => {
-      if (autoScrollTimerRef.current) {
-        clearTimeout(autoScrollTimerRef.current);
-      }
       if (userActivityTimerRef.current) {
         clearTimeout(userActivityTimerRef.current);
       }
     };
-  }, [currentYear, autoScrollPaused]);
+  }, []);
 
   useEffect(() => {
     const handleActivity = () => {
@@ -142,6 +158,14 @@ const Timeline = () => {
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [currentYear]);
+
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="inset-0 w-screen min-h-screen md:h-screen md:overflow-hidden bg-black text-white relative">
@@ -271,7 +295,12 @@ const Timeline = () => {
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 overflow-y-auto mt-12 md:mt-0">
+        <div
+          className="flex-1 overflow-y-auto mt-12 md:mt-0"
+          onWheel={handleWheel}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="max-w-5xl mx-auto p-6 md:p-12 lg:p-16">
             {/* Header Section */}
             <div className="mb-12 border-b border-gray-800 pb-8">

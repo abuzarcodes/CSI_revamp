@@ -1,0 +1,37 @@
+{
+  "WebDevTeam": {
+    "TeamLead": {
+      "Name": "Arpit Verma",
+      "Role": "Tech Lead",
+      "LinkedIn": "https://www.linkedin.com/",
+      "GitHub": "https://github.com/jack1824",
+      "Image": "https://res.cloudinary.com/dzturswbu/image/upload/v1768982246/cd2b958e-1739-4331-a1a2-5d3f590dc76a_eu5t8m.jpg"
+    },
+    "TeamMembers": [
+      {
+        "Name": "Pradeepto Pal",
+        "Role": "Tech Co-Lead",
+        "Image": "https://res.cloudinary.com/dzturswbu/image/upload/v1768967383/IMG-20251216-WA0029_-_Pradeepto_Pal_pt0kbo.jpg",
+        "LinkedIn": "https://www.linkedin.com/in/pradeeptopal/",
+        "GitHub": "https://github.com/PerseusKyogre09"
+      },
+      {
+        "Name": "Abuzar",
+        "Role": "Core Team Member",
+        "Image": "https://res.cloudinary.com/dgo97ti5u/image/upload/v1771940650/abuzar_ei3omq.png",
+        "LinkedIn": "https://www.linkedin.com/in/mohd-abuzar-b97541343/",
+        "GitHub": "https://github.com/abuzarcodes"
+      }
+    ],
+    "GuidedBy": [
+      {
+        "Name": "Parth Mongia",
+        "Role": "President, CSI SRMIST Delhi NCR",
+        "LinkedIn": "https://linkedin.com/in/parth308",
+        "GitHub": "https://github.com/Parth308",
+        "Email": "pm2153@srmist.edu.in",
+        "Image": "https://res.cloudinary.com/dzturswbu/image/upload/v1768964369/d52d4b3d-b413-498d-b57f-b64fa8287a16_e0mmxv.jpg"
+      }
+    ]
+  }
+}

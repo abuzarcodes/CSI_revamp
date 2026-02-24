@@ -40,7 +40,7 @@ function Navbar() {
   // Navbar position classes based on page
   const getPositionClasses = () => {
     if (isRegistrationPage) {
-      return "top-0 bottom-auto mb-4 mt-0";
+      return "top-0 bottom-auto mb-4 mt-8";
     }
     if (isTeamPage) {
       return showNavbar ? "bottom-0 top-auto mb-4" : "top-0 bottom-auto mt-4";

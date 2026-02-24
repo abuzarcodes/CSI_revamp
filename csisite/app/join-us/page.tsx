@@ -102,40 +102,40 @@ export default function JoinUs() {
   // Skeleton loading component
   const LoadingSkeleton = () => (
     <div className="max-w-4xl mx-auto w-full px-2 sm:px-3 md:px-4 lg:px-6 animate-pulse">
-      <div className="bg-blue-900/20 border-0 md:border md:border-gray-200 md:dark:border-blue-800 shadow-lg dark:shadow-cyan-900/20 rounded-xl overflow-hidden">
+      <div className="bg-blue-900/20 border-0 md:border md:border-blue-800 shadow-lg dark:shadow-cyan-900/20 rounded-xl overflow-hidden">
         <div className="p-2 sm:p-3 md:p-4 lg:p-6 space-y-4 sm:space-y-6">
           {/* Event Selection Skeleton */}
           <div className="space-y-2 sm:space-y-3">
-            <div className="h-6 sm:h-7 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
-            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
-            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+            <div className="h-6 sm:h-7 bg-gray-700 rounded w-1/3"></div>
+            <div className="h-10 bg-gray-700 rounded-lg"></div>
+            <div className="h-4 bg-gray-700 rounded w-2/3"></div>
           </div>
 
           {/* Team Members Section Skeleton */}
           <div className="space-y-3 sm:space-y-4">
-            <div className="h-6 sm:h-7 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+            <div className="h-6 sm:h-7 bg-gray-700 rounded w-1/2"></div>
 
             {/* Member Card Skeleton */}
-            <div className="bg-gray-50 dark:bg-blue-900/10 rounded-xl border-0 md:border md:border-gray-200 md:dark:border-blue-800 overflow-hidden">
+            <div className="bg-blue-900/10 rounded-xl border-0 md:border md:border-blue-800 overflow-hidden">
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-700 dark:to-blue-800 h-8 sm:h-10"></div>
               <div className="p-2 sm:p-3 space-y-3">
                 {/* Name and Registration Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                  <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                  <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                  <div className="h-10 bg-gray-700 rounded"></div>
+                  <div className="h-10 bg-gray-700 rounded"></div>
                 </div>
 
                 {/* Academic Info Row */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
-                  <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                  <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                  <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                  <div className="h-10 bg-gray-700 rounded"></div>
+                  <div className="h-10 bg-gray-700 rounded"></div>
+                  <div className="h-10 bg-gray-700 rounded"></div>
                 </div>
 
                 {/* Contact Info Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                  <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                  <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                  <div className="h-10 bg-gray-700 rounded"></div>
+                  <div className="h-10 bg-gray-700 rounded"></div>
                 </div>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function JoinUs() {
 
           {/* Submit Button Skeleton */}
           <div className="pt-3 sm:pt-4">
-            <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+            <div className="h-12 bg-gray-700 rounded-lg"></div>
           </div>
         </div>
       </div>

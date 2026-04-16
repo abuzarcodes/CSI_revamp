@@ -60,7 +60,7 @@ export default function ClosedRegistrationMessage() {
           </Button>
         </form>
         <div className="mt-6 text-center">
-          <Link href="/" className="text-blue-500/80 hover:text-blue-600 inline-flex items-center">
+          <Link href="/events" className="text-blue-500/80 hover:text-blue-600 inline-flex items-center">
             <Calendar className="w-5 h-5 mr-2" />
             View Past Events
           </Link>
